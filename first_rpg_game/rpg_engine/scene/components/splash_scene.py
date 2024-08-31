@@ -22,9 +22,7 @@ class SplashScene(Scene):
     def handle_event(self, event):
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:  # Left mouse button
-                print(f'Mouse clicked. new scene. k: {self.next_scene_key}')
                 self.engine.set_active_scene(self.next_scene_key)
-                print(self.engine.active_scene_key)
 
     def render(self):
         self.screen.blit(self.text_surface, self.pos)
