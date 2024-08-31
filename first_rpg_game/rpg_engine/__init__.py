@@ -18,14 +18,14 @@ class RpgEngine:
         self.active_scene_key = None
 
     def run(self):
-        running = True
+        self.running = True
         clock = self.clock
         fps = self.settings['fps']
-        while running:
+        while self.running:
             scene = self.get_active_scene()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    running = False
+                    self.running = False
 
                 scene.handle_event(event)
 
@@ -43,6 +43,9 @@ class RpgEngine:
             clock.tick(fps)  # limits FPS to 60
 
         pygame.quit()
+
+    def stop(self):
+        self.running = False
 
     def get_active_scene(self):
         return self.scenes[self.active_scene_key]
