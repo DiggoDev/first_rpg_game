@@ -1,6 +1,6 @@
-from .rpg_engine import RpgEngine
+from .game import Game
 
 
 def main():
-    rpg_engine = RpgEngine()
-    rpg_engine.run()
+    game = Game()
+    game.start()
