@@ -21,11 +21,13 @@ class RpgEngine:
         running = True
         clock = self.clock
         fps = self.settings['fps']
-        scene = self.get_active_scene()
         while running:
+            scene = self.get_active_scene()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+
+                scene.handle_event(event)
 
             # fill the screen with a color to wipe away anything from last frame
             scene.pre_render()
