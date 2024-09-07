@@ -12,7 +12,7 @@ class StartMenuScene(MenuScene):
         super().__init__(engine, items)
 
     def start_new_game(self):
-        self.engine.set_active_scene(SceneKeys.GAME)
+        self.engine.set_active_scene(SceneKeys.NEW_GAME)
 
     def quit_game(self):
         self.engine.stop()

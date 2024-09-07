@@ -14,6 +14,8 @@ class RpgEngine:
         self.screen = pygame.display.set_mode((screen_settings['width'], screen_settings['height']))
         self.clock = pygame.time.Clock()
 
+        self.debug = self.settings['debug']
+
         self.scenes: Dict[str, Scene] = {}
         self.active_scene_key = None
 
@@ -39,6 +41,11 @@ class RpgEngine:
 
             # flip() the display to put your work on screen
             pygame.display.flip()
+
+            if self.debug['show_fps']:
+                # Get FPS
+                current_fps = clock.get_fps()
+                print(f"FPS: {current_fps:.2f}")
 
             clock.tick(fps)  # limits FPS to 60
 
