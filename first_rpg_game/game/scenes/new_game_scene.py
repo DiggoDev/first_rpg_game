@@ -8,5 +8,6 @@ class NewGameScene(FormScene):
         super().__init__(engine, title, [{'label': 'Name', 'input_type': 'str'}], 'Create', self.on_submit)
         self.player = player
 
-    def on_submit(self, _form_scene, payload):
+    def on_submit(self, payload):
         self.player.name = payload['Name']
+        print('submit clicked')

@@ -3,8 +3,8 @@ from typing import List, TypedDict, Callable, Dict
 from pygame import KEYDOWN, MOUSEBUTTONDOWN
 from pygame.event import Event
 
+from first_rpg_game.rpg_engine.objects.interactive_objects.button import Button
 from first_rpg_game.rpg_engine.objects.interactive_objects.input_field import InputField
-from first_rpg_game.rpg_engine.objects.interactive_objects.interactive_text import InteractiveText
 from first_rpg_game.rpg_engine.objects.static_objects.text_object import TextObject
 from first_rpg_game.rpg_engine.scene import Scene
 from first_rpg_game.rpg_engine.graphics.fonts import DEFAULT_FONT
@@ -34,7 +34,7 @@ class FormScene(Scene):
             input_field = InputField(200, 100, 200, 50, font)
             self.form_item_objects.append({'label': label_text, 'input': input_field})
 
-        self.submit = InteractiveText([200, 500], submit_text)
+        self.submit = Button(200, 500, submit_text)
         self.submit_action = submit_action
 
         def my_submit_fn():
@@ -43,7 +43,7 @@ class FormScene(Scene):
                 label = obj['label'].text
                 value = obj['input'].text
                 payload[label] = value
-                submit_action(self, payload)
+                submit_action(payload)
 
         self.submit.set_on_click(my_submit_fn)
 
