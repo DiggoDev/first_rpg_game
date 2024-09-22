@@ -3,11 +3,14 @@ from typing import List, TypedDict, Callable, Dict
 from pygame import KEYDOWN, MOUSEBUTTONDOWN
 from pygame.event import Event
 
+from first_rpg_game.rpg_engine.graphics.fonts import FontSize, FontType, get_default_sys_font
 from first_rpg_game.rpg_engine.objects.interactive_objects.button import Button
 from first_rpg_game.rpg_engine.objects.interactive_objects.input_field import InputField
 from first_rpg_game.rpg_engine.objects.static_objects.text_object import TextObject
 from first_rpg_game.rpg_engine.scene import Scene
-from first_rpg_game.rpg_engine.graphics.fonts import DEFAULT_FONT
+# from first_rpg_game.rpg_engine.graphics.fonts import DEFAULT_FONT
+
+default_sys_font = get_default_sys_font(FontType.TEXT, FontSize.MEDIUM)
 
 
 class FormItem(TypedDict):
@@ -22,7 +25,7 @@ class FormScene(Scene):
         self.title = title
 
         self.form_rows = []
-        font = DEFAULT_FONT
+        font = default_sys_font
 
         self.form_item_objects = []
 

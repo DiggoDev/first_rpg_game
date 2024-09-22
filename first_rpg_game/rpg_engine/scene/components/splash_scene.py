@@ -1,13 +1,16 @@
-from pygame.font import SysFont
 from pygame import MOUSEBUTTONDOWN
+
+from first_rpg_game.rpg_engine.graphics.fonts import get_default_sys_font, FontType, FontSize
 
 from .. import Scene
 from ...helpers.coordinates_helper import get_center_coords
 
+default_font = get_default_sys_font(FontType.TEXT, FontSize.LARGE)
+
 
 class SplashScene(Scene):
     def __init__(self, engine, text, next_scene_key, pos=None,
-                 font=SysFont('Arial', 64), text_color=(255, 255, 255)) -> None:
+                 font=default_font, text_color=(255, 255, 255)) -> None:
         super().__init__(engine)
         self.text = text
         self.font = font
