@@ -9,3 +9,22 @@ class Player:
 
     def set_character(self, character: Character):
         self.character = character
+
+        # Set input
+        self.character.set_on_key_down(self._on_key_down)
+
+    def _on_key_down(self, key, unicode):
+        new_x = 0
+        new_y = 0
+        speed = 5
+        match unicode:
+            case 'a':
+                new_x -= speed
+            case 'd':
+                new_x += speed
+            case 'w':
+                new_y -= speed
+            case 's':
+                new_y += speed
+
+        self.character.move(new_x, new_y)

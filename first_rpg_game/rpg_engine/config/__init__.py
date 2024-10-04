@@ -1,4 +1,5 @@
 import os
+import pygame
 
 # Paths
 
@@ -12,3 +13,7 @@ saves_path = os.path.join(_cache_path, 'saves')
 
 def init():
     os.makedirs(saves_path, exist_ok=True)
+
+
+def get_window_size():
+    return pygame.display.get_window_size()

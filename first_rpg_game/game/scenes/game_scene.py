@@ -1,3 +1,6 @@
+from pygame import KEYDOWN, KEYUP
+from pygame.event import Event
+
 from first_rpg_game.game.map import Map
 from first_rpg_game.game.player import Player
 from first_rpg_game.rpg_engine.scene import Scene
@@ -18,3 +21,9 @@ class GameScene(Scene):
         self.player.character.render(self.screen)
 
         pass
+
+    def handle_event(self, event: Event):
+        if event.type == KEYDOWN:
+            self.player.character.on_key_down(event.key, event.unicode)
+        elif event.type == KEYUP:
+            self.player.character.on_key_up(event.key, event.unicode)
