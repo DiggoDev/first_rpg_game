@@ -4,6 +4,7 @@ from first_rpg_game.rpg_engine.graphics.colors import BLACK
 from first_rpg_game.rpg_engine.graphics.fonts import get_default_sys_font, FontType, FontSize
 from first_rpg_game.rpg_engine.helpers.images_helper import load_image
 from first_rpg_game.rpg_engine.objects.interactive_objects import InteractiveObject
+from first_rpg_game.rpg_engine.objects.interactive_objects.interactive_object_types import InteractiveObjectTypes
 
 default_sys_font = get_default_sys_font(FontType.BUTTON, FontSize.MEDIUM)
 
@@ -20,6 +21,7 @@ class Button(InteractiveObject):
                                         self.text_surface.get_height() + self.text_padding))
         shape = Rect(x, y, self.button_image.get_width(), self.button_image.get_height())
         super().__init__(shape)
+        self.type = InteractiveObjectTypes.BUTTON
         self.text_pos = [self.shape.x + (self.text_padding / 2), self.shape.y + (self.text_padding / 2)]
 
     def render(self, screen):

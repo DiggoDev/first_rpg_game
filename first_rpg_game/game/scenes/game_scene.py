@@ -8,13 +8,13 @@ class GameScene(Scene):
         super().__init__(engine)
         self.map = map
         self.player = player
-        if self.player.current_location is None:
-            self.player.current_location = map.locations.START_LOCATION
 
     def render(self):
         match self.player.current_location:
             # Start location renders
             case self.map.locations.START_LOCATION:
                 self.screen.fill('green')
+
+        self.player.character.render(self.screen)
 
         pass
