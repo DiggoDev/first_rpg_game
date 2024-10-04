@@ -1,4 +1,5 @@
 from first_rpg_game.game.player import Player
+from first_rpg_game.game.scene_keys import SceneKeys
 from first_rpg_game.rpg_engine.cache import save_cache
 from first_rpg_game.rpg_engine.scene.components.form_scene import FormScene
 
@@ -13,3 +14,4 @@ class NewGameScene(FormScene):
         self.player.name = payload['Name']
         save_cache.save_game(self.player)
         print('submit clicked')
+        self.engine.set_active_scene(SceneKeys.GAME)
