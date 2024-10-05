@@ -19,6 +19,8 @@ class Character(InteractiveObject):
         'up': False,
         'down': False,
     }
+    direction_prio_x = ''
+    direction_prio_y = ''
 
     def __init__(self, shape: Rect, width, height, x, y, image_name) -> None:
         shape.x = x
@@ -43,6 +45,18 @@ class Character(InteractiveObject):
             else:
                 decelerate_directions.append(key)
 
+        if 'left' in accelerate_directions and 'right' in accelerate_directions and self.direction_prio_x:
+            if self.direction_prio_x == 'left':
+                accelerate_directions.remove('right')
+            else:
+                accelerate_directions.remove('left')
+
+        if 'up' in accelerate_directions and 'down' in accelerate_directions and self.direction_prio_y:
+            if self.direction_prio_y == 'up':
+                accelerate_directions.remove('down')
+            else:
+                accelerate_directions.remove('up')
+
         self.accelerate_in_directions(accelerate_directions)
         if accelerate_x is False:
             self.decelerate_x()
@@ -60,6 +74,38 @@ class Character(InteractiveObject):
     def update_velocity(self, new_velocity):
         # Add the new velocity increment to the current velocity
         self.velocity += new_velocity
+
+    def movement_left(self, move: bool):
+        if move is True:
+            if self.move_directions['right'] is True:
+                self.direction_prio_x = 'left'
+            self.move_directions['left'] = True
+        else:
+            self.move_directions['left'] = False
+
+    def movement_right(self, move: bool):
+        if move is True:
+            if self.move_directions['left'] is True:
+                self.direction_prio_x = 'right'
+            self.move_directions['right'] = True
+        else:
+            self.move_directions['right'] = False
+
+    def movement_up(self, move: bool):
+        if move is True:
+            if self.move_directions['down'] is True:
+                self.direction_prio_y = 'up'
+            self.move_directions['up'] = True
+        else:
+            self.move_directions['up'] = False
+
+    def movement_down(self, move: bool):
+        if move is True:
+            if self.move_directions['up'] is True:
+                self.direction_prio_y = 'down'
+            self.move_directions['down'] = True
+        else:
+            self.move_directions['down'] = False
 
     def accelerate_in_directions(self, directions: list[str]):
         new_x = self.velocity.x

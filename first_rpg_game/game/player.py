@@ -30,26 +30,49 @@ class Player:
     def _on_key_down(self, key, unicode):
         match unicode:
             case 'a':
-                self.character.move_directions['left'] = True
+                self.character.movement_left(True)
             case 'd':
-                self.character.move_directions['right'] = True
+                self.character.movement_right(True)
             case 'w':
-                self.character.move_directions['up'] = True
+                self.character.movement_up(True)
             case 's':
-                self.character.move_directions['down'] = True
+                self.character.movement_down(True)
 
         # self.character.move(new_x, new_y)
 
     def _on_key_up(self, key, unicode):
         match unicode:
             case 'a':
-                self.character.move_directions['left'] = False
+                self.character.movement_left(False)
             case 'd':
-                self.character.move_directions['right'] = False
+                self.character.movement_right(False)
             case 'w':
-                self.character.move_directions['up'] = False
+                self.character.movement_up(False)
             case 's':
-                self.character.move_directions['down'] = False
+                self.character.movement_down(False)
+    # def _on_key_down(self, key, unicode):
+    #     match unicode:
+    #         case 'a':
+    #             self.character.move_directions['left'] = True
+    #         case 'd':
+    #             self.character.move_directions['right'] = True
+    #         case 'w':
+    #             self.character.move_directions['up'] = True
+    #         case 's':
+    #             self.character.move_directions['down'] = True
+
+    #     # self.character.move(new_x, new_y)
+
+    # def _on_key_up(self, key, unicode):
+    #     match unicode:
+    #         case 'a':
+    #             self.character.move_directions['left'] = False
+    #         case 'd':
+    #             self.character.move_directions['right'] = False
+    #         case 'w':
+    #             self.character.move_directions['up'] = False
+    #         case 's':
+    #             self.character.move_directions['down'] = False
 
     def move(self):
         self.character.move_vector(self.velocity)
