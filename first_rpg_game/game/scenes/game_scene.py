@@ -12,6 +12,9 @@ class GameScene(Scene):
         self.map = map
         self.player = player
 
+    def pre_render(self):
+        self.player.character.pre_render()
+
     def render(self):
         match self.player.current_location:
             # Start location renders
@@ -21,6 +24,9 @@ class GameScene(Scene):
         self.player.character.render(self.screen)
 
         pass
+
+    def post_render(self):
+        self.player.character.post_render()
 
     def handle_event(self, event: Event):
         if event.type == KEYDOWN:
