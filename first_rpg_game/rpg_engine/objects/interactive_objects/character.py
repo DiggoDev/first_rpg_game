@@ -99,11 +99,17 @@ class Character(InteractiveObject):
 
     def move_if_out_of_bounds(self):
         size = get_window_size()
+        bounce_val_x = (self.shape.width / 8)
+        bounce_val_y = (self.shape.height / 8)
         if self.shape.x < 0:
-            self.shape.x = 0
+            self.shape.x = bounce_val_x
+            self.velocity.x = self.acceleration
         elif (self.shape.x + self.shape.width) > size[0]:
-            self.shape.x = size[0] - self.shape.width
+            self.shape.x = size[0] - self.shape.width - bounce_val_x
+            self.velocity.x = -self.acceleration
         if self.shape.y < 0:
-            self.shape.y = 0
+            self.shape.y = bounce_val_y
+            self.velocity.y = self.acceleration
         elif (self.shape.y + self.shape.height) > size[1]:
-            self.shape.y = size[1] - self.shape.height
+            self.shape.y = size[1] - self.shape.height - bounce_val_y
+            self.velocity.y = -self.acceleration
