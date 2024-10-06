@@ -10,22 +10,21 @@ default_sys_font = get_default_sys_font(FontType.BUTTON, FontSize.MEDIUM)
 
 
 class Character(InteractiveObject):
-    velocity = Vector2(0, 0)
-    acceleration = 0.1
-    max_speed = 0.1
-    move_directions = {
-        'left': False,
-        'right': False,
-        'up': False,
-        'down': False,
-    }
-    direction_prio_x = ''
-    direction_prio_y = ''
-
     def __init__(self, shape: Rect, width, height, x, y, image_name) -> None:
         shape.x = x
         shape.y = y
         self.image = load_image(f'{image_name}.png', (width, height))
+        self.velocity = Vector2(0, 0)
+        self.acceleration = 0.1
+        self.max_speed = 0.1
+        self.move_directions = {
+            'left': False,
+            'right': False,
+            'up': False,
+            'down': False,
+        }
+        self.direction_prio_x = ''
+        self.direction_prio_y = ''
         super().__init__(shape)
         self.type = InteractiveObjectTypes.CHARACTER
 

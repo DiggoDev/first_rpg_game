@@ -1,6 +1,6 @@
 from pygame import Rect
 from first_rpg_game.game.map import Map
-from first_rpg_game.game.player import Player
+from first_rpg_game.game.game_characters.player import Player
 from first_rpg_game.game.scenes.game_scene import GameScene
 from first_rpg_game.game.scenes.new_game_scene import NewGameScene
 from first_rpg_game.game.scenes.start_menu_scene import StartMenuScene
