@@ -1,10 +1,8 @@
-from pygame import Rect
 from first_rpg_game.game.map import Map
-from first_rpg_game.game.game_characters.player import Player
 from first_rpg_game.game.scenes.game_scene import GameScene
 from first_rpg_game.game.scenes.new_game_scene import NewGameScene
 from first_rpg_game.game.scenes.start_menu_scene import StartMenuScene
-from first_rpg_game.rpg_engine.objects.interactive_objects.character import Character
+from first_rpg_game.game.sprites.player import Player
 from first_rpg_game.rpg_engine.scene.components.splash_scene import SplashScene
 from ..rpg_engine import RpgEngine
 from .scene_keys import SceneKeys
@@ -17,11 +15,9 @@ class Game:
 
         # Game objects
         map = Map()
-        player = Player('')
+        player = Player(20, 20)
         if player.current_location is None:
             player.current_location = map.locations.START_LOCATION
-        char = Character(Rect(0, 0, 36, 36), 36, 36, 10, 10, 'player')
-        player.set_character(char)
 
         # Scenes
         splash_scene = SplashScene(self.engine, title, SceneKeys.START_MENU)

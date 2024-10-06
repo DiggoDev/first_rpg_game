@@ -1,5 +1,5 @@
-from first_rpg_game.game.game_characters.player import Player
 from first_rpg_game.game.scene_keys import SceneKeys
+from first_rpg_game.game.sprites.player import Player
 from first_rpg_game.rpg_engine.cache import save_cache
 from first_rpg_game.rpg_engine.scene.components.form_scene import FormScene
 
