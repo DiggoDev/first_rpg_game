@@ -1,5 +1,5 @@
 from first_rpg_game.game.map.locations import LocationNames
-from first_rpg_game.game.game_characters.player import Player
+from first_rpg_game.game.sprites.player import Player
 
 
 class StartLocation:
