@@ -2,10 +2,10 @@ from pygame.event import Event
 from pygame import KEYDOWN, KEYUP, Vector2
 
 
-from first_rpg_game.game.sprites.controllable_sprite import ControllableSprite
-from first_rpg_game.game.sprites.image_sprite import ImageSprite
-from first_rpg_game.game.sprites.movable import Movable
 from first_rpg_game.rpg_engine.config import get_window_size
+from first_rpg_game.rpg_engine.sprites.image_sprite import ImageSprite
+from first_rpg_game.rpg_engine.sprites.controllable_sprite import ControllableSprite
+from first_rpg_game.rpg_engine.sprites.movable import Movable
 
 
 class Player(ImageSprite, Movable, ControllableSprite):
